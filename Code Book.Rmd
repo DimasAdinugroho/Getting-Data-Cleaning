@@ -7,14 +7,15 @@ output: html_document
 
 ## Code Book
 
-Code Book ini merupakan summary dari data field pada file tidy.txt
+This Code Book is summary in run_analysis.R script:
 
-Menggunakan **x_train, y_train, subject_train** file pada folder train dan **x_test, y_test,  subject_test** pada folder test.
-subject mengacu pada orang yang sedang diteliti. Hasil dari **tidy.txt** merupakan average measure(mean) dari tiap subject dan activitynya (30 subject * 6 activities = 180 baris)
+Using **x_train, y_train, subject_train** file in train folder and **x_test, y_test,  subject_test** in test folder.
+
+The result on **tidy.txt** is the average measure(mean) for each subject and activities (30 subject * 6 activities = 180 rows)
   
-**activity_label.txt** berisikan 6 activity yang dilakukan saat memegang smartphones. di identifikasikan dengan value 1:6.
+**activity_label.txt** contain 6 activities, identified with value 1:6.
 
-**features.txt** berisikan **mean** dan **standard deviasi** untuk berbagai variable atau posisi tubuh dalam bidang X,Y dan Z saat memegang smartphones. 
+**features.txt** contains **mean** and **standard deviation** for every variable in X,Y and Z format. 
 
 ##features.txt 
 * tBodyAccMeanX
@@ -104,23 +105,3 @@ subject mengacu pada orang yang sedang diteliti. Hasil dari **tidy.txt** merupak
 * SITTING (value 4): subject was sitting during the test
 * STANDING (value 5): subject was standing during the test
 * LAYING (value 6): subject was laying down during the test
-
-##Langkah-langkah untuk mendapatkan data yang clean
-### Test Data
-* "x_test" yang berisikan variable menggunakan nama kolom pada "feature.txt"
-* "y_test" dengan nama kolom pada "activity_label.txt", kemudian dijadikan type data factor dan mapping value dari sebuah angka (1:6) menjadi nama aktivitas dengan menggunakan 'revalue'
-* merge subject, acticity dan variable menjadi data frame "test_data"
-
-### Train Data
-* "x_train" yang berisikan variable menggunakan nama kolom pada "feature.txt"
-* "y_train" dengan nama kolom pada "activity_label.txt", kemudian dijadikan type data factor dan mapping value dari sebuah angka (1:6) menjadi nama aktivitas dengan menggunakan 'revalue'
-* merge subject, acticity dan variable menjadi data frame "train_data"
-
-### Merge two Data
-* merge "test_data" dan "train_data" menjadi "raw_data" dengan menggunakna cbind, subject diubah menjadi factor data type
-* "raw_data" diubah dengan package 'plyr' menjadi type tbl_df untuk mempermudah process data
-* Data di grop berdasarkan activity dan subject (untuk activity dan subject yang sama akan di dijumlahkan dan dihitung meannya)
-
-
-
-
